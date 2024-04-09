@@ -15,17 +15,17 @@ function HomeProps(props: minhaProps) {
 }
 
 function Home(props: minhaProps) {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <div>
         <h1>Ao clicar nesse botão você verá um exemplo de props</h1>
-      {loggedIn ? (
+      {isClicked ? (
         <div>
           <HomeProps title={props.title} description={props.description} />
         </div>
       ) : (
-        <button onClick={() => setLoggedIn(true)}>Exemplo de Hooks</button>
+        <button onClick={() => setIsClicked(true)}>Exemplo de Hooks</button>
       )}
     </div>
   );
