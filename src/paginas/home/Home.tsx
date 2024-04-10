@@ -1,34 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './Home.css';
 
-interface minhaProps {
-  title: string;
-  description: string;
-}
+function Home() {
+    return (
+        <>
+            <div className="w-full h-screen bg-white flex flex-col justify-start items-center mb-auto" style={{paddingTop: '70px'}}>
 
-function HomeProps(props: minhaProps) {
-  return (
-    <>
-      <h2>{props.title}</h2>
-      <p>{props.description}</p>
-    </>
-  );
-}
+            <div className="flex flex-col gap-4 items-center justify-center py-4">
+                        <h2 className='text-5xl font-bold'>Seja bem vindo!</h2>
+                        <p className='text-xl'>Expresse aqui seus pensamentos e opiniões</p>
+                        <div className="flex justify-around gap-4">
+                        <button className='rounded bg-black text-white py-3 px-3 text-lg font-bold'>Ver postagens</button>
+                        </div>
+                    </div>
+                    <div className="flex justify-center">
+                        {/* Conteúdo do outro lado, se houver */}
+                    </div>
+                </div>
 
-function Home(props: minhaProps) {
-  const [isClicked, setIsClicked] = useState(false);
-
-  return (
-    <div>
-        <h1>Ao clicar nesse botão você verá um exemplo de props</h1>
-      {isClicked ? (
-        <div>
-          <HomeProps title={props.title} description={props.description} />
-        </div>
-      ) : (
-        <button onClick={() => setIsClicked(true)}>Exemplo de Hooks</button>
-      )}
-    </div>
-  );
+        </>
+    );
 }
 
 export default Home;

@@ -1,10 +1,5 @@
-.titulo{
-    text-align: center;
-}
-
-.img{
-    width: 1152px;
-    height: 576px;
-    display: block;
-    margin: 0 auto;
+button:hover {
+    background-color: #333; /* Cor de fundo escura quando hover */
+    color: #fff; /* Cor do texto branca quando hover */
+    /* Adicione qualquer outra propriedade de estilo desejada para o efeito hover */
 }
