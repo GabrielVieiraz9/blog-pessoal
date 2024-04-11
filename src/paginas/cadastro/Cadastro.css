@@ -1,0 +1,15 @@
+.fundoCadastro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Use 100vh para garantir que a div ocupe toda a altura da viewport */
+  overflow: hidden; /* Para garantir que a imagem não ultrapasse os limites da div */
+  position: relative; /* Define uma posição relativa para a div */
+}
+
+.imagemFundo {
+  position: absolute;
+  top: 50%;
+  transform: translate(100%, -50%) scale(1.9); /* Aumenta o tamanho da imagem em 20% */
+}

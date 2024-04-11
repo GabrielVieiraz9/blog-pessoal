@@ -7,7 +7,7 @@ function Footer() {
 
   return (
     <>
-        <div className="flex justify-center items-end bg-red-500 text-white">
+        <div className="flex justify-center items-end bg-gray-500 text-white">
           <div className="container flex flex-col items-center py-4">
           <p className='text-xl font-bold'>Blog pessoal Generation | Copyright: </p>
           <p className='text-lg mb-3'>Acesse nossas redes sociais</p>

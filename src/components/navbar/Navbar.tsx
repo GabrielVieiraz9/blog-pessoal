@@ -8,21 +8,21 @@ function Navbar() {
 
   return (
     <>
-     <div className='bg-red-500 text-white flex justify-center py-4'>
-     <div className="container flex justify-between text-lg">
+     <div className='w-full bg-gray-500 text-white flex justify-center py-4'>
+          <div className="container flex justify-between text-lg">
             <div className='text-2xl font-bold uppercase'>Blog Pessoal</div>
 
             <div className='flex gap-4'>
               <Link to='/login' className='hover:underline'>Login</Link>
               <Link to='/home' className='hover:underline'>Home</Link>
-              <Link to='/postagens' className='hover:underline'>Postagens</Link>
-              <Link to='/temas' className='hover:underline'>Temas</Link>
-              <Link to='/cadastrar_tema' className='hover:underline'>Cadastrar tema</Link>
-              <Link to='/perfil' className='hover:underline'>Perfil</Link>
-              <Link to='/sair' className='hover:underline'>Sair</Link>
+              <div className='hover:underline'>Postagens</div>
+              <div className='hover:underline'>Temas</div>
+              <div className='hover:underline'>Cadastrar tema</div>
+              <div className='hover:underline'>Perfil</div>
+              <div className='hover:underline'>Sair</div>
             </div>
           </div>
-          </div>
+        </div>
     </>
   )
 }
