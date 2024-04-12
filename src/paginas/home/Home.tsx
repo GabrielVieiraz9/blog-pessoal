@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import homeLogo from '../../assets/home.png'
 import './Home.css';
+import { AuthContext } from '../../contexts/AuthContext';
 
 function Home() {
+  
+  const {usuario} = useContext(AuthContext);
+
     return (
         <>
         <div className="bg-indigo-900 flex justify-center">
           <div className='container grid grid-cols-2 text-white'>
             <div className="flex flex-col gap-4 items-center justify-center py-4">
-              <h2 className='text-5xl font-bold'>Seja bem vinde!</h2>
+              <h2 className='text-5xl font-bold'>Olá, {usuario.nome}</h2>
               <p className='text-xl'>Expresse aqui seus pensamentos e opniões</p>
   
               <div className="flex justify-around gap-4">
