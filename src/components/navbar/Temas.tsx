@@ -1,10 +1,4 @@
-import { AuthContext } from '../../contexts/AuthContext.tsx'
-import React, { useContext } from 'react';
-
-
 function Temas() {
-    
-    const {usuario} = useContext(AuthContext);
 
     return (
         <>

@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { AuthContext } from '../../contexts/AuthContext.tsx'
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 
 const navigation = [
@@ -27,8 +27,6 @@ export default function Example() {
       alert('Usuário deslogado com sucesso')
       navigate('/login')
   }
-
-  let navbarComponent
   
   return (
     
@@ -75,7 +73,7 @@ export default function Example() {
               </div>
               {usuario.id !== 0 && (
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <a className="text-white bg-gray-800 rounded-md px-3 py-1 text-sm font-medium">@{usuario.nome}</a>
+              <a className="text-xs text-white bg-gray-800 rounded-md px-3 py-1 font-medium">@{usuario.nome}</a>
                 
 
                 {/* Profile dropdown */}
