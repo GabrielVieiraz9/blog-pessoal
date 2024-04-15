@@ -1,7 +1,11 @@
-import React from 'react';
+import { AuthContext } from '../../contexts/AuthContext.tsx'
+import React, { useContext } from 'react';
 
 
 function Temas() {
+    
+    const {usuario} = useContext(AuthContext);
+
     return (
         <>
             <div className="h-96 mb-96">

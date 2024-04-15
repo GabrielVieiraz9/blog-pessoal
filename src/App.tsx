@@ -9,9 +9,10 @@ import Cadastro from './paginas/cadastro/Cadastro';
 import Home from './paginas/home/Home';
 import { AuthProvider } from './contexts/AuthContext';
 import Perfil from './components/navbar/Perfil';
-import CadastrarTema from './components/navbar/CadastrarTema';
-import Temas from './components/navbar/Temas';
 import Postagens from './components/navbar/Postagens';
+import ListaTemas from './components/temas/listaTemas/ListaTemas';
+import FormularioTema from './components/temas/formularioTema/FormularioTema';
+import DeletarTema from './components/temas/deletarTema/DeletarTema';
 
 
 function App() {
@@ -27,9 +28,11 @@ function App() {
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/home" element={<Home />} />
               <Route path="/perfil" element={<Perfil />} />
-              <Route path="/cadastrar_tema" element={<CadastrarTema />} />
-              <Route path="/temas" element={<Temas />} />
+              <Route path="/temas" element={<ListaTemas />} />
               <Route path="/postagens" element={<Postagens />} />
+              <Route path="/cadastroTema" element={<FormularioTema />} />
+              <Route path="/editarTema/:id" element={<FormularioTema />} />
+              <Route path="/deletarTema/:id" element={<DeletarTema />} />
             </Routes>
           </div>
           <Footer />
