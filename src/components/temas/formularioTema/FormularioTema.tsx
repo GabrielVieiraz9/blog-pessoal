@@ -108,17 +108,21 @@ function FormularioTema() {
             type="text"
             placeholder="Descrição"
             name='descricao'
-            className="border-2 border-slate-700 rounded p-2"
+            style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+            className="border-gray-300 rounded-lg p-2 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full"
             value={tema.descricao}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
+
+        <div className='mt-5'>
         <button
           className="rounded text-slate-100 bg-indigo-400 hover:bg-indigo-800 w-1/2 py-2 mx-auto block"
           type="submit"
         >
           {id === undefined ? 'Cadastrar' : 'Editar'}
         </button>
+        </div>
       </form>
     </div>
   );

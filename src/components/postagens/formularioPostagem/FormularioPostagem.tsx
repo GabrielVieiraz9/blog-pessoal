@@ -140,7 +140,7 @@ function FormularioPostagem() {
       <h1 className="text-4xl text-center my-8">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
 
       <form onSubmit={gerarNovaPostagem} className="flex flex-col w-1/2 gap-4">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mt-6">
           <label htmlFor="titulo">Titulo da postagem</label>
           <input
             value={postagem.titulo}
@@ -149,7 +149,8 @@ function FormularioPostagem() {
             placeholder="Titulo"
             name="titulo"
             required
-            className="border-2 border-slate-700 rounded p-2"
+            style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+            className="border-gray-300 rounded-lg p-2 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -161,12 +162,15 @@ function FormularioPostagem() {
             placeholder="Texto"
             name="texto"
             required
-            className="border-2 border-slate-700 rounded p-2"
+            style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+            className="border-gray-300 rounded-lg p-2 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full"
           />
         </div>
         <div className="flex flex-col gap-2">
           <p>Tema da postagem</p>
-          <select name="tema" id="tema" className='border p-2 border-slate-800 rounded' onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
+          <select name="tema" id="tema" 
+          style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+          className='border-gray-300 rounded-lg p-2 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full' onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
             <option value="" selected disabled>Selecione um tema</option>
             {temas.map((tema) => (
               <>
@@ -175,9 +179,11 @@ function FormularioPostagem() {
             ))}
           </select>
         </div>
+<div className="mt-5">
         <button disabled={carregandoTema} type='submit' className='rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto block py-2'>
           {carregandoTema ? <span>Carregando</span> : id !== undefined ? 'Editar' : 'Cadastrar'}
         </button>
+        </div>
       </form>
     </div>
   );

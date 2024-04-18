@@ -13,11 +13,11 @@ interface AvatarProps {
   
     // Condicional para definir a classe de tamanho com base na propriedade 'tamanho'
     if (size === "small") {
-        sizeClass = "h-8 w-8"; // Tamanho pequeno
+        sizeClass = "h-8 w-8 "; // Tamanho pequeno
     } else if (size === "big") {
-        sizeClass = "h-20 w-20"; // Tamanho grande
+        sizeClass = "h-20 w-20 transition-all duration-300 hover:scale-110 hover:h-25 hover:w-25 hover:mb-1"; // Tamanho grande
     } else {
-        sizeClass = "h-11 w-11"; // Tamanho padrão
+        sizeClass = "h-11 w-11 "; // Tamanho padrão
     }
 
     // Condicional para definir a classe de tamanho com base na propriedade 'tamanho'

@@ -30,6 +30,12 @@ export default function Example() {
     navigate("/login");
   }
 
+  const handleClick = (nome: string) => {
+    navigator.clipboard.writeText(nome);
+    // Feedback opcional
+    alert(`"${nome}" copiado para a área de transferência.`);
+  };
+
   return (
     <Disclosure as="nav" className="bg-gray-900">
       {({ open }) => (
@@ -82,13 +88,16 @@ export default function Example() {
             </div>
             {usuario.id !== 0 && (
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <a className="text-xs text-white bg-gray-800 rounded-md px-3 py-1 font-medium">
+                <a
+                  className="text-xs text-white bg-gray-800 rounded-md px-3 py-1 font-medium cursor-pointer"
+                  onClick={() => handleClick(usuario.nome)}
+                >
                   @{usuario.nome}
                 </a>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3 rounded-full">
-                  <Menu.Button className="relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                  <Menu.Button className="relative flex rounded-full text-sm hover:outline-none hover:ring-4 hover:ring-gray hover:ring-offset-gray-800">
                     <span className="absolute -inset-1.5 h-10 w-10 rounded-full" />
                     <span className="sr-only">Open user menu</span>
                     <Avatar foto={usuario.foto} bordercolour="white" />
@@ -103,14 +112,13 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <Link
-                            to="/perfil"
+                          <div
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700 border-b"
+                              "block px-4 py-2 text-sm text-gray-700 border-t border-b transition-all duration-100 hover:font-bold hover:py-3 rounded-md  hover:border-black"
                             )}
                           >
                             <div
@@ -120,17 +128,23 @@ export default function Example() {
                               )}
                             >
                               <div className="flex flex-col items-center">
-                                {" "}
                                 {/* Flex container para organizar elementos em colunas */}
-                                <Avatar
-                                  foto={usuario.foto}
-                                  size="big"
-                                  bordercolour="black"
-                                />
-                                <span>@{usuario.nome}</span>
+                                <Link to="/perfil">
+                                  <Avatar
+                                    foto={usuario.foto}
+                                    size="big"
+                                    bordercolour="black"
+                                  />
+                                </Link>
+                                <span
+                                  className="transition-all duration-100 hover:font-bold cursor-pointer"
+                                  onClick={() => handleClick(usuario.nome)}
+                                >
+                                  @{usuario.nome}
+                                </span>
                               </div>
                             </div>
-                          </Link>
+                          </div>
                         )}
                       </Menu.Item>
 
@@ -140,7 +154,7 @@ export default function Example() {
                             to="/postagens"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700 border-t border-b"
+                              "block px-4 py-2 text-sm text-gray-700 border-t border-b transition-all duration-100 hover:font-bold hover:py-3 hover:border-black"
                             )}
                           >
                             Postagens
@@ -154,7 +168,7 @@ export default function Example() {
                             to="/cadastroTema"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700 border-t border-b"
+                              "block px-4 py-2 text-sm text-gray-700 border-t border-b transition-all duration-100 hover:font-bold hover:py-3 hover:border-black"
                             )}
                           >
                             Criar tema
@@ -162,7 +176,7 @@ export default function Example() {
                         )}
                       </Menu.Item>
 
-                     {/* <Menu.Item>
+                      {/* <Menu.Item>
                         {({}) => (
                           <button onClick={() => setIsModalOpen(true)}>
                             Criar postagem
@@ -176,7 +190,7 @@ export default function Example() {
                             to="/temas"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700 border-t border-b"
+                              "block px-4 py-2 text-sm text-gray-700 border-t border-b transition-all duration-100 hover:font-bold hover:py-3 hover:border-black"
                             )}
                           >
                             Temas
@@ -189,8 +203,8 @@ export default function Example() {
                           <Link
                             to="http://localhost:5173/"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700 border-t"
+                              active ? "bg-red-100" : "",
+                              "block px-4 py-2 text-sm text-red-700 border-t transition-all duration-100 hover:font-bold rounded-md hover:py-3 hover:border-red-500"
                             )}
                             onClick={() => logout()}
                           >
@@ -206,12 +220,7 @@ export default function Example() {
                   showModal={isModalOpen}
                   children={
                     <>
-                    
-                    <FormularioPostagem
-                    />
-
-
-
+                      <FormularioPostagem />
                     </>
                   }
                 />
