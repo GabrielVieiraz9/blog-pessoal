@@ -71,80 +71,92 @@ function Cadastro() {
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold">
-      <div className="fundoCadastro hidden lg:block">
+        <div className="fundoCadastro hidden lg:block">
           <img src={imagemCadastro} alt="Descrição da imagem" className="imagemFundo" />
-      </div>
-        <form className='flex justify-center items-center flex-col w-2/3 gap-3' onSubmit={cadastrarNovoUsuario}>
-          <h2 className='text-slate-900 text-5xl'>Cadastrar</h2>
-          <div className="flex flex-col w-full">
-            <label htmlFor="nome">Nome</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              placeholder="Nome"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuario.nome} 
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="usuario">Usuario</label>
-            <input
-              type="text"
-              id="usuario"
-              name="usuario"
-              placeholder="usuario@email.com"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuario.usuario} 
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="foto">Foto</label>
-            <input
-              type="text"
-              id="foto"
-              name="foto"
-              placeholder="Foto"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuario.foto} 
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="senha">Senha</label>
-            <input
-              type="password"
-              id="senha"
-              name="senha"
-              placeholder="Senha"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuario.senha} 
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="confirmarSenha">Confirmar Senha</label>
-            <input
-              type="password"
-              id="confirmarSenha"
-              name="confirmarSenha"
-              placeholder="Confirmar Senha"
-              className="border-2 border-slate-700 rounded p-2"
-              value={confirmaSenha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
-            />
-          </div>
-          <div className="flex justify-around w-full gap-8">
-            <button className='rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2' onClick={back}>
-              Cancelar
-            </button>
-            <button className='rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 py-2' type='submit'>
-              Cadastrar
-            </button>
-          </div>
-        </form>
+        </div>
+        <form style={{ width: '100%', maxWidth: '600px' }} className='flex flex-col justify-center items-center gap-6 border p-6 bg-gray-50 rounded-lg shadow-md ' onSubmit={cadastrarNovoUsuario}>
+  <h2 className='text-gray-800 text-3xl font-semibold mb-4'>Cadastrar</h2>
+  
+  <div className="flex flex-col w-full">
+    <label htmlFor="nome" className="text-gray-700">Nome<span className="text-red-500">*</span></label>
+    <input
+      type="text"
+      id="nome"
+      name="nome"
+      placeholder="Nome"
+      style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+      className="border-gray-300 rounded-lg p-3 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full"
+      value={usuario.nome} 
+      onChange={(e) => atualizarEstado(e)}
+    />
+  </div>
+
+  <div className="flex flex-col w-full">
+    <label htmlFor="usuario" className="text-gray-700">Usuário<span className="text-red-500">*</span></label>
+    <input
+      type="text"
+      id="usuario"
+      name="usuario"
+      placeholder="usuario@email.com"
+      style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+      className="border-gray-300 rounded-lg p-3 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full"
+      value={usuario.usuario} 
+      onChange={(e) => atualizarEstado(e)}
+    />
+  </div>
+
+  <div className="flex flex-col w-full">
+    <label htmlFor="foto" className="text-gray-700">Foto</label>
+    <input
+      type="text"
+      id="foto"
+      name="foto"
+      placeholder="Foto"
+      style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+      className="border-gray-300 rounded-lg p-3 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full"
+      value={usuario.foto} 
+      onChange={(e) => atualizarEstado(e)}
+    />
+  </div>
+
+  <div className="flex flex-col w-full">
+    <label htmlFor="senha" className="text-gray-700">Senha<span className="text-red-500">*</span></label>
+    <input
+      type="password"
+      id="senha"
+      name="senha"
+      placeholder="Senha"
+      style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+      className="border-gray-300 rounded-lg p-3 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full"
+      value={usuario.senha} 
+      onChange={(e) => atualizarEstado(e)}
+    />
+  </div>
+
+  <div className="flex flex-col w-full">
+    <label htmlFor="confirmarSenha" className="text-gray-700">Confirmar Senha<span className="text-red-500">*</span></label>
+    <input
+      type="password"
+      id="confirmarSenha"
+      name="confirmarSenha"
+      placeholder="Confirmar Senha"
+      style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+      className="border-gray-300 rounded-lg p-3 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-full"
+      value={confirmaSenha}
+      onChange={(e) => handleConfirmarSenha(e)}
+    />
+  </div>
+
+  <div className="flex justify-around w-full gap-6 pt-6">
+    <button className='rounded text-white bg-red-400 hover:bg-red-700 w-full lg:w-1/2 py-3 transition duration-300 ease-in-out' onClick={back}>
+      Cancelar
+    </button>
+    <button className='rounded text-white bg-indigo-400 hover:bg-indigo-700 w-full lg:w-1/2 py-3 transition duration-300 ease-in-out' type='submit'>
+      Cadastrar
+    </button>
+  </div>
+</form>
+
       </div>
     </>
   )
