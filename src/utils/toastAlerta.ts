@@ -10,7 +10,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: 'colored',
+        theme: 'light',
         progress: undefined,
       });
       break;
@@ -23,7 +23,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: 'colored',
+        theme: 'light',
         progress: undefined,
       });
       break;
@@ -36,7 +36,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: 'colored',
+        theme: 'light',
         progress: undefined,
       });
       break;
@@ -49,7 +49,7 @@ export function toastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: 'colored',
+        theme: 'light',
         progress: undefined,
       });
       break;
