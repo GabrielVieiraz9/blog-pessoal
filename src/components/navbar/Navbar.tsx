@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../avatar/Avatar.tsx";
 import Modal from "../modal/Modal.tsx";
 import FormularioPostagem from "../postagens/formularioPostagem/FormularioPostagem.tsx";
+import { toastAlerta } from "../../utils/toastAlerta.ts";
 
 const navigation = [
   { name: "Criar Conta", to: "/cadastro", current: false },
@@ -26,14 +27,14 @@ export default function Example() {
 
   function logout() {
     handleLogout();
-    alert("Usuário deslogado com sucesso");
+    toastAlerta("Usuário deslogado com sucesso", 'sucesso');
     navigate("/login");
   }
 
   const handleClick = (nome: string) => {
     navigator.clipboard.writeText(nome);
     // Feedback opcional
-    alert(`"${nome}" copiado para a área de transferência.`);
+    toastAlerta(`"${nome}" copiado para a área de transferência.`, 'info');
   };
 
   return (
