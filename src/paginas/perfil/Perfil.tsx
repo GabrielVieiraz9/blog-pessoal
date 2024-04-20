@@ -31,7 +31,7 @@ function Perfil() {
   
         <p className="text-sm leading-6 text-gray-600">
         <h2 className="text-base font-semibold leading-7 text-gray-900">Perfil</h2>
-          Essas informações serão exibidas publicamente, então tome cuidado com o que você compartilha!
+        <span className="text-red-500">Essas informações serão exibidas publicamente, então tome cuidado com o que você compartilha!</span>
         </p>
   </div>
     
