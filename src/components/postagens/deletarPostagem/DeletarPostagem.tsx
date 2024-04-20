@@ -64,6 +64,7 @@ function DeletarPostagem() {
     retornar()
   }
   return (
+    <div className="min-h-[80vh]">
     <div className='container w-1/3 mx-auto'>
       <h1 className='text-4xl text-center my-4'>Deletar postagem</h1>
 
@@ -82,6 +83,7 @@ function DeletarPostagem() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   )
 }

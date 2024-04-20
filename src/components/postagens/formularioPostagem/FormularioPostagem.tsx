@@ -137,6 +137,7 @@ function FormularioPostagem() {
   const carregandoTema = tema.descricao === '';
 
   return (
+    <div className="min-h-[80vh]">
     <div className="container flex flex-col mx-auto items-center">
       <h1 className="text-4xl text-center my-8">{id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}</h1>
 
@@ -186,6 +187,7 @@ function FormularioPostagem() {
         </button>
         </div>
       </form>
+    </div>
     </div>
   );
 }

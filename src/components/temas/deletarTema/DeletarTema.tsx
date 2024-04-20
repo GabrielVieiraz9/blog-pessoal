@@ -64,6 +64,7 @@ function DeletarTema() {
         retornar()
     }
     return (
+        <div className="min-h-[80vh]">
         <div className='container w-1/3 mx-auto'>
             <h1 className='text-4xl text-center my-4'>Deletar tema</h1>
 
@@ -79,6 +80,7 @@ function DeletarTema() {
                     </button>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

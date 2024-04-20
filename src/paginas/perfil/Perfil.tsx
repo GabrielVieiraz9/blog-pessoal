@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthContext'
 import { toastAlerta } from '../../utils/toastAlerta'
+import ModalPicture from '../../components/modal/ModalPicture'
 
 
 function Perfil() {
@@ -18,10 +19,14 @@ function Perfil() {
 
   return (
 <>
+<div className='min-h-[80vh]'>
 
-<div className='w-full'>
-  <div className='container mx-auto rounded-2xl overflow-hidden border p-10 mt-10'>
-  <form>
+<div className='w-full flex justify-center'>
+
+<div id="smash" className='container w-80 rounded-2xl overflow-hidden mt-10' style={{ width: '1200px' }}></div>
+
+  <div className='container mx-auto rounded-2xl overflow-hidden border-2 border-black p-5 mt-10'>
+  <form className="">
   <div className="space-y-12 flex justify-center h-20">
   
         <p className="text-sm leading-6 text-gray-600">
@@ -30,22 +35,23 @@ function Perfil() {
         </p>
   </div>
     
-    <div className="space-y-12 flex justify-center">
+  <div className="flex justify-center space-x-12">
 
-    <img src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} className='rounded-full w-40 h-40 mx-auto border-8 border-black mb-4' />
-            <button
-              type="button"
-              className="rounded-md bg-white w-40 h-10 px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            >
-                
-              Alterar
-            </button>
+    
+    
+    <div className="p-5">
+    <img
+  src={usuario.foto}
+  alt={`Foto de perfil de ${usuario.nome}`}
+  className='rounded-full w-36 h-36 mx-auto border-8 border-black mb-4 object-cover'
+/>
+            <ModalPicture/>
+    </div>
 
-
-
-      <div className=" border-gray-900/10 pb-12">
-        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <div className="sm:col-span-3">
+<div id ="separator" className='flex justify-center'>
+      <div className="p-5">
+        <div className="mt-3 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3 pb-9">
             <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
               Nome
             </label>
@@ -55,13 +61,15 @@ function Perfil() {
                 name="first-name"
                 id="first-name"
                 autoComplete="given-name"
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Nome"
+                style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+                className="border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72"
               />
             </div>
           </div>
           <div className="sm:col-span-3">
             <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
-              Usuário
+              Senha
             </label>
             <div className="mt-2">
               <input
@@ -69,18 +77,20 @@ function Perfil() {
                 name="last-name"
                 id="last-name"
                 autoComplete="family-name"
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Senha"
+                style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+                className="border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72"
               />
-            </div>
+</div>
           </div>
         </div>
       </div>
 
-      <div className=" border-gray-900/10 pb-12">
-        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <div className="sm:col-span-3">
+      <div className="p-5">
+        <div className="mt-3 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="sm:col-span-3 pb-9">
             <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-              Senha
+            Usuário
             </label>
             <div className="mt-2">
               <input
@@ -88,7 +98,9 @@ function Perfil() {
                 name="first-name"
                 id="first-name"
                 autoComplete="given-name"
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="usuario@email.com"
+                style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+                className="border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72"
               />
             </div>
           </div>
@@ -102,35 +114,54 @@ function Perfil() {
                 name="last-name"
                 id="last-name"
                 autoComplete="family-name"
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Confirmar Senha"
+                style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
+                className="border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72"
               />
             </div>
           </div>
         </div>
       </div>
 
+      </div>
     </div>
 
   </form>
   </div>
 
-  <div className="w-full border">
+<div id="smash" className='container w-80 rounded-2xl overflow-hidden mt-10' style={{ width: '1200px' }}></div>
 
-  <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-      Cancelar
-    </button>
-    <button
-      type="submit"
-      className="ml-4 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-    >
-      Salvar
-    </button>
 
-    </div>
 
 
 </div>
 
+<div className="w-full flex justify-center pt-4">
+
+<div id ="smash" className=' overflow-hidden'></div>
+
+<div className="flex justify-center items-center pl-8">
+
+
+
+  </div>
+
+  <div id ="smash" className='flex justify-center overflow-hidden'>
+  <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+    Cancelar
+  </button>
+  <button
+    type="submit"
+    className="ml-4 rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+  >
+    Salvar
+  </button>
+
+  </div>
+
+  </div>
+
+  </div>
 </>
   )
 }

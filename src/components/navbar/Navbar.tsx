@@ -54,7 +54,7 @@ export default function Example() {
                 )}
               </Disclosure.Button>
             </div>
-            <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="absolute inset-y-0 right-0 flex space-x-100 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <div
                 className="flex flex-shrink-0 items-center"
                 style={{
@@ -66,8 +66,8 @@ export default function Example() {
                 <Link to="/login">Hax Blog</Link>
               </div>
               {usuario.id == 0 && (
-                <div className="hidden sm:ml-6 sm:block pl-10">
-                  <div className="flex space-x-4">
+                <div className="fixed top-0 right-0 flex items-center justify-center pr-10 mt-3">
+                  <div className="flex space-x-1">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
