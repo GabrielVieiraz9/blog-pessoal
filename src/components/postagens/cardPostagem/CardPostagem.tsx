@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import Postagem from '../../../models/Postagem'
 import Avatar from '../../avatar/Avatar'
-//import { useContext } from 'react'
-//import { AuthContext } from '../../../contexts/AuthContext'
+import { useContext } from 'react'
+import { AuthContext } from '../../../contexts/AuthContext'
 
 interface CardPostagemProps {
   post: Postagem
@@ -10,7 +10,7 @@ interface CardPostagemProps {
 
 function CardPostagem({post}: CardPostagemProps) {
 
-    //const { usuario } = useContext(AuthContext)
+    const { usuario } = useContext(AuthContext)
 
   return (
     <div className='border-slate-300 border flex flex-col overflow-hidden justify-between rounded-md bg-gray-300' id="card" style={{ borderColor: 'black'}}>
@@ -39,12 +39,24 @@ function CardPostagem({post}: CardPostagemProps) {
         </div>
       </div>
       <div className="flex">
+
+      {(post.usuario?.id === usuario.id || usuario.id === 1) && (
+     
       <Link to={`/editarPostagem/${post.id}`} className='text-white bg-indigo-600 hover:bg-indigo-400 w-full flex items-center justify-center py-2 rounded-md rounded-r-none rounded-b-none' id="card">
           <button>Editar</button>
         </Link>
-        <Link to={`/deletarPostagem/${post.id}`} className='text-white bg-red-500 hover:bg-red-700 w-full flex items-center justify-center rounded-md rounded-l-none rounded-b-none' id="card">
-          <button>Deletar</button>
-        </Link>
+
+)}
+
+        {(post.usuario?.id === usuario.id || usuario.id === 1) && (
+          
+
+  <Link to={`/deletarPostagem/${post.id}`} className='text-white bg-red-500 hover:bg-red-700 w-full flex items-center justify-center rounded-md rounded-l-none rounded-b-none' id="card">
+    <button>Deletar</button>
+  </Link>
+
+)}
+
       </div>
     </div>
 
