@@ -2,7 +2,6 @@ import { createContext, ReactNode, useEffect, useState } from "react"
 import UsuarioLogin from "../models/UsuarioLogin"
 import { login } from "../services/Service"
 import { toastAlerta } from "../utils/toastAlerta"
-import { useNavigate } from "react-router-dom"
 
 interface AuthContextProps {
     usuario: UsuarioLogin
