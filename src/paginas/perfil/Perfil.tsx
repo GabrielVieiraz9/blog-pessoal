@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthContext'
 import { toastAlerta } from '../../utils/toastAlerta'
@@ -6,16 +6,34 @@ import ModalPicture from '../../components/modal/ModalPicture'
 
 
 function Perfil() {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
-  const { usuario } = useContext(AuthContext)
+  const { usuario } = useContext(AuthContext);
+
+  // Estado para armazenar os valores dos campos de entrada
+  const [campos, setCampos] = useState({
+    nome: '',
+    senha: '',
+    usuarioInput: '',
+    confirmarSenha: '',
+  });
 
   useEffect(() => {
-    if (usuario.token === "") {
-      toastAlerta('Dados inconsistentes. Verifique as informações de cadastro.', 'erro')
-      navigate("/login")
+    if (usuario.token === '') {
+      toastAlerta('Dados inconsistentes. Verifique as informações de cadastro.', 'erro');
+      navigate('/login');
     }
-  }, [usuario.token])
+  }, [usuario.token]);
+
+  // Função para limpar os campos
+  const limparCampos = () => {
+    setCampos({
+      nome: '',
+      senha: '',
+      usuarioInput: '',
+      confirmarSenha: '',
+    });
+  };
 
   return (
 <>
@@ -57,13 +75,15 @@ function Perfil() {
             </label>
             <div className="mt-2">
               <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                placeholder="Nome"
-                style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
-                className="border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72"
+               value={campos.nome}
+               onChange={(e) => setCampos({ ...campos, nome: e.target.value })}
+               type='text'
+               name='nome'
+               id='nome'
+               autoComplete='given-name'
+               placeholder='Nome'
+               style={{ borderWidth: '3px' }}
+               className='border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72'
               />
             </div>
           </div>
@@ -72,15 +92,17 @@ function Perfil() {
               Senha
             </label>
             <div className="mt-2">
-              <input
-                type="text"
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
-                placeholder="Senha"
-                style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
-                className="border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72"
-              />
+            <input
+                            value={campos.senha}
+                            onChange={(e) => setCampos({ ...campos, senha: e.target.value })}
+                            type='text'
+                            name='senha'
+                            id='senha'
+                            autoComplete='family-name'
+                            placeholder='Senha'
+                            style={{ borderWidth: '3px' }}
+                            className='border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72'
+                          />
 </div>
           </div>
         </div>
@@ -93,15 +115,17 @@ function Perfil() {
             Usuário
             </label>
             <div className="mt-2">
-              <input
-                type="text"
-                name="first-name"
-                id="first-name"
-                autoComplete="given-name"
-                placeholder="usuario@email.com"
-                style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
-                className="border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72"
-              />
+            <input
+                            value={campos.usuarioInput}
+                            onChange={(e) => setCampos({ ...campos, usuarioInput: e.target.value })}
+                            type='text'
+                            name='usuario'
+                            id='usuario'
+                            autoComplete='given-name'
+                            placeholder='usuario@email.com'
+                            style={{ borderWidth: '3px' }}
+                            className='border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72'
+                          />
             </div>
           </div>
           <div className="sm:col-span-3">
@@ -109,15 +133,17 @@ function Perfil() {
               Confirmar Senha
             </label>
             <div className="mt-2">
-              <input
-                type="text"
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
-                placeholder="Confirmar Senha"
-                style={{ borderWidth: '3px' }} // Definindo a largura da borda manualmente
-                className="border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72"
-              />
+            <input
+                            value={campos.confirmarSenha}
+                            onChange={(e) => setCampos({ ...campos, confirmarSenha: e.target.value })}
+                            type='text'
+                            name='confirmar-senha'
+                            id='confirmar-senha'
+                            autoComplete='family-name'
+                            placeholder='Confirmar Senha'
+                            style={{ borderWidth: '3px' }}
+                            className='border-gray-300 rounded-lg p-2 py-1.5 focus:outline-none focus:border-indigo-500 transition duration-300 hover:border-blue-300 hover:shadow-md w-72'
+                          />
             </div>
           </div>
         </div>
@@ -147,9 +173,13 @@ function Perfil() {
   </div>
 
   <div id ="smash" className='flex justify-center overflow-hidden'>
-  <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-    Cancelar
-  </button>
+  <button
+            type='button'
+            className='text-sm font-semibold leading-6 text-gray-900 rounded-md px-3 py-2'
+            onClick={limparCampos} // Chama a função para limpar os campos ao clicar no botão "Cancelar"
+          >
+            Cancelar
+          </button>
   <button
     type="submit"
     className="ml-4 rounded-md bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

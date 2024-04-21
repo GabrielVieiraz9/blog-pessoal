@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from "react"
 import UsuarioLogin from "../models/UsuarioLogin"
 import { login } from "../services/Service"
 import { toastAlerta } from "../utils/toastAlerta"
+import { useNavigate } from "react-router-dom"
 
 interface AuthContextProps {
     usuario: UsuarioLogin
@@ -18,8 +19,9 @@ export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthProvider({ children }: AuthProviderProps) {
 
+
     const [usuario, setUsuario] = useState<UsuarioLogin>(() => {
-        const storagedUser = localStorage.getItem('@App:usuario');
+        const storagedUser = sessionStorage.getItem('@App:usuario'); // Alterado para sessionStorage
         if (storagedUser) {
             return JSON.parse(storagedUser);
         }
@@ -32,8 +34,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
             token: ""
         };
     });
-useEffect(() => {
-        localStorage.setItem('@App:usuario', JSON.stringify(usuario));
+    useEffect(() => {
+        sessionStorage.setItem('@App:usuario', JSON.stringify(usuario)); // Alterado para sessionStorage
     }, [usuario]);
 
     const [isLoading, setIsLoading] = useState(false)
@@ -62,7 +64,8 @@ useEffect(() => {
             foto: "",
             token: ""
         })
-        localStorage.removeItem('@App:usuario');
+        sessionStorage.removeItem('@App:usuario'); // Alterado para sessionStorage
+
     }
 
     return (
