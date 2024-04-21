@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 
 function ProfileModify() {
+
   const [linkFoto, setLinkFoto] = useState<string>('');
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -21,6 +22,7 @@ function ProfileModify() {
         <div className="flex flex-col gap-2 mt-6">
           <label htmlFor="titulo">Link da foto</label>
           <input
+            value={linkFoto}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             type="text"
             placeholder="Link da foto: .png, .jpg, .jpeg e etc..."
