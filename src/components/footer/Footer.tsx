@@ -14,13 +14,14 @@ function Footer() {
           <p className="text-lg mb-3">Acesse as minhas redes sociais</p>
 
           <div className="flex gap-2">
-            <a href="https://www.linkedin.com/in/gabriel-vieira-z9/">
-              <LinkedinLogo size={48} weight="bold" />
-            </a>
-            <a href="https://github.com/GabrielVieiraz9">
-              <GithubLogo size={48} weight="bold" />
-            </a>
-          </div>
+  <a href="https://www.linkedin.com/in/gabriel-vieira-z9/" target="_blank" rel="noopener noreferrer">
+    <LinkedinLogo size={48} weight="bold" />
+  </a>
+  <a href="https://github.com/GabrielVieiraz9" target="_blank" rel="noopener noreferrer">
+    <GithubLogo size={48} weight="bold" />
+  </a>
+</div>
+
         </div>
       </div>
     </>
